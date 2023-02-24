@@ -19,5 +19,3 @@ test.txt $\to$ 测试文件(考虑数字,中英文及中英字符,换行)
 email : bhliu_nexus@163.com
 
 欢迎各位大佬交流 : )
-
-除特别声明外，均采用 CC BY-NC-SA 4.0 许可协议。
