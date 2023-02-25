@@ -78,7 +78,7 @@ filesize = int(filesize)
 progress = tqdm.tqdm(range(filesize), f"Receiving {filename}", unit="B", unit_scale=True, unit_divisor=1024)
 with open(filename, "w",encoding='utf-8') as f:
     while True:
-        # read 1024 bytes from the socket (receive)
+        
         bytes_read_crypted = client_socket.recv(BUFFER_SIZE)
         bytes_read = aes.decrypt(bytes_read_crypted)
         ans_for_bar = aes.decrypt(bytes_read_crypted)        
@@ -100,8 +100,7 @@ with open(filename, "w",encoding='utf-8') as f:
         # print("end_position = ",end_position)
         res = res[(start_position+1):end_position]
         # print(" res = ",res)
-        # 上面是 去掉 b 和两个 ’ 符号
-        # 转为bytes    
+        
         res = res.encode('unicode_escape')
         # print(" res_1 = ",res)
         res2 = res.decode('utf-8').replace(r'\\\\x','%')
@@ -114,8 +113,7 @@ with open(filename, "w",encoding='utf-8') as f:
         f.write(res3)
         progress.update(filesize)
 
-# close the client socket
+
 client_socket.close()
-# close the server socket
 s.close()
 
